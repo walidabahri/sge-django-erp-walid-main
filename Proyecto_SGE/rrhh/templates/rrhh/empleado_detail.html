@@ -1,0 +1,32 @@
+{% extends 'rrhh/base.html' %}
+{% block content %}
+<div class="container my-4">
+    <h2>Detalle de Empleado</h2>
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        {% if empleado.foto %}
+        <div class="col-md-4">
+          <!-- Employee photo (if exists) -->
+          <img src="{{ empleado.foto.url }}" alt="Foto de {{ empleado.nombre }} {{ empleado.apellidos }}" class="img-fluid rounded-start">
+        </div>
+        {% endif %}
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ empleado.nombre }} {{ empleado.apellidos }}</h5>
+            <p class="card-text"><strong>Departamento:</strong> {{ empleado.departamento.nombre }}</p>
+            <p class="card-text"><strong>Puesto:</strong> {{ empleado.puesto.titulo }}</p>
+            <p class="card-text"><strong>Email:</strong> {{ empleado.email }}</p>
+            <p class="card-text"><strong>Dirección:</strong> {{ empleado.direccion }}</p>
+            {% if empleado.foto %}
+            <p class="card-text"><small class="text-muted">Fotografía de {{ empleado.nombre }}.</small></p>
+            {% else %}
+            <p class="card-text"><small class="text-muted">Este empleado no tiene fotografía.</small></p>
+            {% endif %}
+            <a href="{% url 'editar_empleado' empleado.id %}" class="btn btn-warning">Editar</a>
+            <a href="{% url 'lista_empleados' %}" class="btn btn-secondary">Volver al listado</a>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

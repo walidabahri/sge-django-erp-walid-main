@@ -1,0 +1,12 @@
+{% extends "rrhh/base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2>{{ puesto.titulo }}</h2>
+    <p><strong>Departamento:</strong> {{ puesto.departamento.nombre }}</p>
+    <div class="mt-3">
+        <a href="{% url 'editar_puesto' puesto.id %}" class="btn btn-warning">Editar</a>
+        <a href="{% url 'eliminar_puesto' puesto.id %}" class="btn btn-danger">Eliminar</a>
+        <a href="{% url 'listar_puestos' %}" class="btn btn-secondary">Volver</a>
+    </div>
+</div>
+{% endblock %}

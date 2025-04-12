@@ -1,0 +1,13 @@
+{% extends "rrhh/base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h3>¿Estás seguro de que deseas eliminar el puesto "{{ puesto.titulo }}"?</h3>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mt-3 d-flex justify-content-between">
+            <a href="{% url 'listar_puestos' %}" class="btn btn-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

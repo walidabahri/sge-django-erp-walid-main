@@ -1,0 +1,28 @@
+{% extends "rrhh/base.html" %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0">Crear Puesto</h4>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label">{{ form.titulo.label }}</label>
+                    {% render_field form.titulo class="form-control" %}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">{{ form.departamento.label }}</label>
+                    {% render_field form.departamento class="form-select" %}
+                </div>
+                <div class="d-flex justify-content-between">
+                    <a href="{% url 'listar_puestos' %}" class="btn btn-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

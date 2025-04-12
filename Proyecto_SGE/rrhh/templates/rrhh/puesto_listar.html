@@ -1,0 +1,29 @@
+{% extends "rrhh/base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h1>Puestos</h1>
+    <a href="{% url 'crear_puesto' %}" class="btn btn-primary mb-3">Nuevo Puesto</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Departamento</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for p in puestos %}
+            <tr>
+                <td>{{ p.titulo }}</td>
+                <td>{{ p.departamento.nombre }}</td>
+                <td>
+                    <a href="{% url 'ver_puesto' p.id %}" class="btn btn-info btn-sm">Ver</a>
+                    <a href="{% url 'editar_puesto' p.id %}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'eliminar_puesto' p.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

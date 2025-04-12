@@ -1,0 +1,51 @@
+{% extends "rrhh/base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Crear Empleado</h4>
+        </div>
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">{{ form.nombre.label }}</label>
+                        {% render_field form.nombre class="form-control" %}
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">{{ form.apellidos.label }}</label>
+                        {% render_field form.apellidos class="form-control" %}
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">{{ form.departamento.label }}</label>
+                        {% render_field form.departamento class="form-select" %}
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">{{ form.puesto.label }}</label>
+                        {% render_field form.puesto class="form-select" %}
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">{{ form.direccion.label }}</label>
+                        {% render_field form.direccion class="form-control" rows="3" %}
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">{{ form.email.label }}</label>
+                        {% render_field form.email class="form-control" %}
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">{{ form.foto.label }}</label>
+                        {% render_field form.foto class="form-control" %}
+                    </div>
+                </div>
+                <div class="mt-4 d-flex justify-content-between">
+                    <a href="{% url 'listar_empleados' %}" class="btn btn-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

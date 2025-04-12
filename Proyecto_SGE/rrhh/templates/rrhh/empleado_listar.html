@@ -1,0 +1,24 @@
+{% extends "rrhh/base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h1>Empleados</h1>
+    <a href="{% url 'crear_empleado' %}" class="btn btn-primary mb-3">Nuevo</a>
+    <table class="table table-striped">
+        <thead><tr><th>Nombre</th><th>Departamento</th><th>Puesto</th><th>Acciones</th></tr></thead>
+        <tbody>
+        {% for e in empleados %}
+            <tr>
+                <td>{{ e.nombre }} {{ e.apellidos }}</td>
+                <td>{{ e.departamento.nombre }}</td>
+                <td>{{ e.puesto.titulo }}</td>
+                <td>
+                    <a href="{% url 'ver_empleado' e.id %}" class="btn btn-info btn-sm">Ver</a>
+                    <a href="{% url 'editar_empleado' e.id %}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'eliminar_empleado' e.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
